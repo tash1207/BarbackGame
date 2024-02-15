@@ -45,7 +45,9 @@ public class BotController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f, LayerMask.GetMask("Interactable"));
+            // Shift the position up a little due to bottom pivot.
+            Vector2 raycastOrigin = new Vector2(rigidbody2d.position.x, rigidbody2d.position.y + 0.6f);
+            RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, lookDirection, 1.3f, LayerMask.GetMask("Interactable"));
             if (hit.collider != null)
             {
                 GameObject interactableObject = hit.collider.gameObject;
