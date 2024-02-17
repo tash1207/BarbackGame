@@ -855,7 +855,7 @@ GameObject:
   - component: {fileID: 775874604}
   - component: {fileID: 775874605}
   - component: {fileID: 775874606}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CowDog
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -912,7 +912,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!4 &775874602
 Transform:
   m_ObjectHideFlags: 0
@@ -943,7 +943,7 @@ BoxCollider2D:
   m_Offset: {x: 0.048897743, y: -0.108089685}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.2}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -984,6 +984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 138d115d4a15eb7429eca9668a46b340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  poopPrefab: {fileID: 3998162300645278039, guid: 38a27d63d7b627d46a53413ec1800b20, type: 3}
 --- !u!50 &775874606
 Rigidbody2D:
   serializedVersion: 4
@@ -992,7 +993,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 775874600}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

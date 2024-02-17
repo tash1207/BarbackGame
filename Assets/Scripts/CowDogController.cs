@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CowDogController : MonoBehaviour
 {
+    public GameObject poopPrefab;
+
     Animator animator;
     Rigidbody2D rigidbody2d;
     bool napping = false;
@@ -27,11 +29,20 @@ public class CowDogController : MonoBehaviour
 
         if (timer < 0)
         {
+            // Maybe take a nap.
             bool takeNap = Random.Range(0, 10) < 5;
             timer = takeNap ? changeTime * 2 : changeTime;
             napping = takeNap;
             if (!napping)
             {
+                // Maybe take a poop.
+                if (Random.Range(0, 20) < 2)
+                {
+                    float randomX = Random.Range(-0.25f, 0.25f);
+                    float randomY = Random.Range(-0.15f, 0.3f);
+                    Vector2 poopPosition = new Vector2(gameObject.transform.position.x + randomX, gameObject.transform.position.y + randomY);
+                    Instantiate(poopPrefab, poopPosition, Quaternion.identity);
+                }
                 direction = -direction;
             }
         }

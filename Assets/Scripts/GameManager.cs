@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject beerPrefab;
 
     float timer;
-    float changeTime = 2.0f;
+    float changeTime = 3.0f;
     int tableIndex = 0;
 
     // Start is called before the first frame update
@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
             float randomY = Random.Range(-0.7f, 0.7f);
             Vector2 beerPosition = new Vector2(table.transform.position.x + randomX, table.transform.position.y + randomY);
             Instantiate(beerPrefab, beerPosition, Quaternion.identity);
+            // TODO: Set beer as a child of the table so the sorting group is applied.
             // beerPrefab.transform.parent = table.transform;
             // TODO: Adjust time depending on how many removables are on screen.
             timer = changeTime;
