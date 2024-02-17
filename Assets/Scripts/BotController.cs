@@ -7,6 +7,7 @@ public class BotController : MonoBehaviour
     public GameObject bot;
     public int maxGlassware = 5;
     int currentGlassware;
+    int glassesCleared = 0;
 
     AudioSource audioSource;
     Rigidbody2D rigidbody2d;
@@ -87,8 +88,9 @@ public class BotController : MonoBehaviour
     {
         if (currentGlassware > 0)
         {
+            glassesCleared = glassesCleared + currentGlassware;
             currentGlassware = 0;
-            Debug.Log("Cleared glassware");
+            Debug.Log("Total glassware cleared = " + glassesCleared);
             return true;
         }
         return false;

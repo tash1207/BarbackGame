@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractableController : MonoBehaviour
 {
-    public GameObject gameObject;
+    // public GameObject gameObject;
     public AudioClip interactedClip;
     public AudioClip negativeClip;
 
@@ -25,7 +25,7 @@ public class InteractableController : MonoBehaviour
         BotController controller = bot.GetComponent<BotController>();
         Debug.Log("Interacted");
         // We set the gameObject on the beer so it can be destroyed.
-        if (gameObject != null)
+        if (gameObject != null && gameObject.tag == "Removable")
         {
             if (controller.ChangeGlassware(1))
             {

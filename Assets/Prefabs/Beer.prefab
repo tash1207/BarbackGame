@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7000521710720602322}
   m_Layer: 8
   m_Name: Beer
-  m_TagString: Untagged
+  m_TagString: Removable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,6 +122,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9ef1eca03bb8c4594f9fda5d4a7e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 0}
   interactedClip: {fileID: 8300000, guid: f17dfe6f0fceb874eb4fbe4e011cda3d, type: 3}
   negativeClip: {fileID: 8300000, guid: 496208e345898e24dac7f22e8bc864d2, type: 3}
