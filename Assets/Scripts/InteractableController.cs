@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class InteractableController : MonoBehaviour
 {
-    // public GameObject gameObject;
     public AudioClip interactedClip;
     public AudioClip negativeClip;
 
@@ -24,9 +23,9 @@ public class InteractableController : MonoBehaviour
     {
         BotController controller = bot.GetComponent<BotController>();
         Debug.Log("Interacted");
-        // We set the gameObject on the beer so it can be destroyed.
-        if (gameObject != null && gameObject.tag == "Removable")
+        if (gameObject.tag == "Removable")
         {
+            // TODO: Check if beer or dog poop.
             if (controller.ChangeGlassware(1))
             {
                 controller.PlaySound(interactedClip);
@@ -37,8 +36,6 @@ public class InteractableController : MonoBehaviour
                 controller.PlaySound(negativeClip);
             }
         }
-        // We don't set the gameObject on the drainCover/table so it isn't destroyed.
-        // TODO: Change interactable behavior based on the object rather than the gameObject field.
         else
         {
             if (controller.ClearGlassware())
