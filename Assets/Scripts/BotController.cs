@@ -90,7 +90,7 @@ public class BotController : MonoBehaviour
         else
         {
             currentGlassware = Mathf.Clamp(currentGlassware + amount, 0, maxGlassware);
-            Debug.Log(currentGlassware + "/" + maxGlassware);
+            Debug.Log("Glassware: " + currentGlassware + "/" + maxGlassware);
             return true;
         }
     }
@@ -123,7 +123,7 @@ public class BotController : MonoBehaviour
         else
         {
             currentTrays = Mathf.Clamp(currentTrays + amount, 0, maxTrays);
-            Debug.Log(currentTrays + "/" + maxTrays);
+            Debug.Log("Trays: " + currentTrays + "/" + maxTrays);
             return true;
         }
     }
@@ -143,9 +143,9 @@ public class BotController : MonoBehaviour
     // Returns whether the change in poop succeeded or not.
     public bool ChangePoop(int amount)
     {
-        if (currentGlassware > 0)
+        if (currentGlassware > 0 || currentTrays > 0)
         {
-            Debug.Log("Drop off glassware before picking up poop");
+            Debug.Log("Drop off glassware/trays before picking up poop");
             return false;
         }
         else
