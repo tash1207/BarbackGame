@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3465897483787326924}
   - component: {fileID: 3465897483787326925}
   - component: {fileID: 5624500399900782389}
-  - component: {fileID: 7000521710720602322}
+  - component: {fileID: 3498924468015800851}
   m_Layer: 8
   m_Name: Beer
   m_TagString: Removable
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8849704, y: 1.0511243}
   m_EdgeRadius: 0
---- !u!114 &7000521710720602322
+--- !u!114 &3498924468015800851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3465897483787326922}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d9ef1eca03bb8c4594f9fda5d4a7e78, type: 3}
+  m_Script: {fileID: 11500000, guid: 16fdf7d9a70dcfd478a104b3e8ca9116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactedClip: {fileID: 8300000, guid: f17dfe6f0fceb874eb4fbe4e011cda3d, type: 3}

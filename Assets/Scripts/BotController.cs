@@ -5,9 +5,14 @@ using UnityEngine;
 public class BotController : MonoBehaviour
 {
     public GameObject bot;
-    public int maxGlassware = 5;
+    int maxGlassware = 5;
     int currentGlassware;
     int glassesCleared = 0;
+    int maxTrays = 8;
+    int currentTrays;
+    int traysCleared = 0;
+    int currentPoop;
+    int poopCleared = 0;
 
     AudioSource audioSource;
     Rigidbody2D rigidbody2d;
@@ -24,6 +29,7 @@ public class BotController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         currentGlassware = 0;
+        currentPoop = 0;
     }
 
     // Update is called once per frame
@@ -53,8 +59,8 @@ public class BotController : MonoBehaviour
             {
                 GameObject interactableObject = hit.collider.gameObject;
                 Debug.Log("Hit object " + interactableObject);
-                InteractableController interactableController = interactableObject.GetComponent<InteractableController>();
-                interactableController.Interact(bot);
+                Interactable interactable = interactableObject.GetComponent<Interactable>();
+                interactable.Interact(bot);
             }
         }
     }
@@ -68,10 +74,15 @@ public class BotController : MonoBehaviour
         rigidbody2d.MovePosition(position);
     }
 
-    // Returns whether tha change in glassware succeeded or not.
+    // Returns whether the change in glassware succeeded or not.
     public bool ChangeGlassware(int amount)
     {
-        if (currentGlassware == maxGlassware)
+        if (currentPoop > 0)
+        {
+            Debug.Log("Drop off poop before picking up glassware");
+            return false;
+        }
+        else if (currentGlassware == maxGlassware)
         {
             Debug.Log("Already carrying max glasses");
             return false;
@@ -91,6 +102,67 @@ public class BotController : MonoBehaviour
             glassesCleared = glassesCleared + currentGlassware;
             currentGlassware = 0;
             Debug.Log("Total glassware cleared = " + glassesCleared);
+            return true;
+        }
+        return false;
+    }
+
+    // Returns whether the change in trays succeeded or not.
+    public bool ChangeTrays(int amount)
+    {
+        if (currentPoop > 0)
+        {
+            Debug.Log("Drop off poop before picking up tray");
+            return false;
+        }
+        else if (currentTrays == maxTrays)
+        {
+            Debug.Log("Already carrying max trays");
+            return false;
+        }
+        else
+        {
+            currentTrays = Mathf.Clamp(currentTrays + amount, 0, maxTrays);
+            Debug.Log(currentTrays + "/" + maxTrays);
+            return true;
+        }
+    }
+
+    public bool ClearTrays()
+    {
+        if (currentTrays > 0)
+        {
+            traysCleared = traysCleared + currentTrays;
+            currentTrays = 0;
+            Debug.Log("Total trays cleared = " + traysCleared);
+            return true;
+        }
+        return false;
+    }
+
+    // Returns whether the change in poop succeeded or not.
+    public bool ChangePoop(int amount)
+    {
+        if (currentGlassware > 0)
+        {
+            Debug.Log("Drop off glassware before picking up poop");
+            return false;
+        }
+        else
+        {
+            currentPoop = currentPoop + amount;
+            Debug.Log("Carrying poop: " + currentPoop);
+            return true;
+        }
+    }
+
+    public bool ClearPoop()
+    {
+        if (currentPoop > 0)
+        {
+            poopCleared = poopCleared + currentPoop;
+            currentPoop = 0;
+            Debug.Log("Total poop cleared = " + poopCleared);
             return true;
         }
         return false;

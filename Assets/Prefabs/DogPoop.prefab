@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3998162300645278034}
   - component: {fileID: 3998162300645278037}
   - component: {fileID: 3998162300645278036}
-  - component: {fileID: 3998162300645278035}
+  - component: {fileID: -1183573235228841852}
   m_Layer: 8
   m_Name: DogPoop
   m_TagString: Removable
@@ -110,7 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6182375, y: 0.2813902}
   m_EdgeRadius: 0
---- !u!114 &3998162300645278035
+--- !u!114 &-1183573235228841852
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3998162300645278039}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d9ef1eca03bb8c4594f9fda5d4a7e78, type: 3}
+  m_Script: {fileID: 11500000, guid: 96d306c086062b946bf86c930394b10d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactedClip: {fileID: 0}
