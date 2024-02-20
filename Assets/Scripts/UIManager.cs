@@ -15,13 +15,15 @@ public class UIManager : MonoBehaviour
         instance = this;
     }
 
-    public void SetBeerValue(string value)
+    public void SetBeerValue(int value)
     {
-        beerCount.text = value;
+        beerCount.text = value.ToString();
+        beerCount.color = value == 5 ? Color.red : Color.black;
     }
 
-    public void SetTrayValue(string value)
+    public void SetTrayValue(int value)
     {
-        trayCount.text = value;
+        trayCount.text = value.ToString();
+        trayCount.color = value == 10 ? Color.red : Color.white ;
     }
 }
