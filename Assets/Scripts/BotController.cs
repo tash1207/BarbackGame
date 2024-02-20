@@ -91,6 +91,7 @@ public class BotController : MonoBehaviour
         {
             currentGlassware = Mathf.Clamp(currentGlassware + amount, 0, maxGlassware);
             Debug.Log("Glassware: " + currentGlassware + "/" + maxGlassware);
+            UIManager.instance.SetBeerValue(currentGlassware.ToString());
             return true;
         }
     }
@@ -102,6 +103,7 @@ public class BotController : MonoBehaviour
             glassesCleared = glassesCleared + currentGlassware;
             currentGlassware = 0;
             Debug.Log("Total glassware cleared = " + glassesCleared);
+            UIManager.instance.SetBeerValue("0");
             return true;
         }
         return false;
@@ -124,6 +126,7 @@ public class BotController : MonoBehaviour
         {
             currentTrays = Mathf.Clamp(currentTrays + amount, 0, maxTrays);
             Debug.Log("Trays: " + currentTrays + "/" + maxTrays);
+            UIManager.instance.SetTrayValue(currentTrays.ToString());
             return true;
         }
     }
@@ -135,6 +138,7 @@ public class BotController : MonoBehaviour
             traysCleared = traysCleared + currentTrays;
             currentTrays = 0;
             Debug.Log("Total trays cleared = " + traysCleared);
+            UIManager.instance.SetTrayValue("0");
             return true;
         }
         return false;
