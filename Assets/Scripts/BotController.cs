@@ -30,6 +30,8 @@ public class BotController : MonoBehaviour
 
         currentGlassware = 0;
         currentPoop = 0;
+
+        AlertControl.instance.ShowAlert("Press E to interact with objects");
     }
 
     // Update is called once per frame
@@ -50,17 +52,20 @@ public class BotController : MonoBehaviour
         animator.SetFloat("Look Y", lookDirection.y);
         animator.SetFloat("Speed", move.magnitude);
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (!PauseControl.gameIsPaused)
         {
-            // Shift the position up a little due to bottom pivot.
-            Vector2 raycastOrigin = new Vector2(rigidbody2d.position.x, rigidbody2d.position.y + 0.6f);
-            RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, lookDirection, 1.3f, LayerMask.GetMask("Interactable"));
-            if (hit.collider != null)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                GameObject interactableObject = hit.collider.gameObject;
-                Debug.Log("Hit object " + interactableObject);
-                Interactable interactable = interactableObject.GetComponent<Interactable>();
-                interactable.Interact(bot);
+                // Shift the position up a little due to bottom pivot.
+                Vector2 raycastOrigin = new Vector2(rigidbody2d.position.x, rigidbody2d.position.y + 0.6f);
+                RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, lookDirection, 1.3f, LayerMask.GetMask("Interactable"));
+                if (hit.collider != null)
+                {
+                    GameObject interactableObject = hit.collider.gameObject;
+                    Debug.Log("Hit object " + interactableObject);
+                    Interactable interactable = interactableObject.GetComponent<Interactable>();
+                    interactable.Interact(bot);
+                }
             }
         }
     }
@@ -80,11 +85,13 @@ public class BotController : MonoBehaviour
         if (currentPoop > 0)
         {
             Debug.Log("Drop off poop before picking up glassware");
+            AlertControl.instance.ShowAlert("Drop off poop before picking up glassware");
             return false;
         }
         else if (currentGlassware == maxGlassware)
         {
             Debug.Log("Already carrying max glasses");
+            AlertControl.instance.ShowAlert("Already carrying max glasses");
             return false;
         }
         else
@@ -98,6 +105,11 @@ public class BotController : MonoBehaviour
 
     public bool ClearGlassware()
     {
+        if (currentPoop > 0)
+        {
+            AlertControl.instance.ShowAlert("Poop goes in the trash can (:");
+            return false;
+        }
         if (currentGlassware > 0)
         {
             glassesCleared = glassesCleared + currentGlassware;
@@ -115,11 +127,13 @@ public class BotController : MonoBehaviour
         if (currentPoop > 0)
         {
             Debug.Log("Drop off poop before picking up tray");
+            AlertControl.instance.ShowAlert("Drop off poop before picking up tray");
             return false;
         }
         else if (currentTrays == maxTrays)
         {
             Debug.Log("Already carrying max trays");
+            AlertControl.instance.ShowAlert("Already carrying max trays");
             return false;
         }
         else
@@ -150,6 +164,7 @@ public class BotController : MonoBehaviour
         if (currentGlassware > 0 || currentTrays > 0)
         {
             Debug.Log("Drop off glassware/trays before picking up poop");
+            AlertControl.instance.ShowAlert("Drop off glassware/trays before picking up poop");
             return false;
         }
         else
