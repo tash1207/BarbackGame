@@ -5,6 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    AudioSource audioSource;
+    public AudioClip buttonClickSound;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void PlayGame()
     {
         SceneManager.LoadSceneAsync(1);
@@ -13,5 +21,15 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void ClickButton()
+    {
+        PlaySound(buttonClickSound);
+    }
+
+    void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }
