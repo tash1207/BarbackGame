@@ -112,6 +112,7 @@ public class BotController : MonoBehaviour
         }
         if (currentGlassware > 0)
         {
+            ScoreControl.instance.IncrementGlassware(currentGlassware);
             glassesCleared = glassesCleared + currentGlassware;
             currentGlassware = 0;
             Debug.Log("Total glassware cleared = " + glassesCleared);
@@ -149,6 +150,7 @@ public class BotController : MonoBehaviour
     {
         if (currentTrays > 0)
         {
+            ScoreControl.instance.IncrementTrays(currentTrays);
             traysCleared = traysCleared + currentTrays;
             currentTrays = 0;
             Debug.Log("Total trays cleared = " + traysCleared);
@@ -179,6 +181,7 @@ public class BotController : MonoBehaviour
     {
         if (currentPoop > 0)
         {
+            ScoreControl.instance.IncrementPoop(currentPoop);
             poopCleared = poopCleared + currentPoop;
             currentPoop = 0;
             Debug.Log("Total poop cleared = " + poopCleared);
