@@ -1286,6 +1286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseDisplay: {fileID: 1911074172}
+  alertDisplay: {fileID: 1558145038}
 --- !u!114 &795318642
 MonoBehaviour:
   m_ObjectHideFlags: 0
