@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseControl : MonoBehaviour
 {
     public static PauseControl instance { get; private set; }
     public static bool gameIsPaused;
     public GameObject pauseDisplay;
+    public GameObject alertDisplay;
 
     void Awake()
     {
@@ -19,23 +21,37 @@ public class PauseControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             gameIsPaused = !gameIsPaused;
-            PauseGame();
+            if (gameIsPaused)
+            {
+                PauseGame();
+            }
+            else
+            {
+                ResumeGame();
+            }
         }
     }
 
     public void PauseGame()
     {
-        if (gameIsPaused)
-        {
-            Time.timeScale = 0;
-            AudioListener.pause = true;
-            pauseDisplay.SetActive(true);
-        }
-        else
-        {
-            Time.timeScale = 1;
-            AudioListener.pause = false;
-            pauseDisplay.SetActive(false);
-        }
+        Time.timeScale = 0;
+        AudioListener.pause = true;
+        pauseDisplay.SetActive(true);
+        alertDisplay.SetActive(false);
+
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        AudioListener.pause = false;
+        pauseDisplay.SetActive(false);
+    }
+
+    public void ExitToMainMenu()
+    {
+        gameIsPaused = false;
+        ResumeGame();
+        SceneManager.LoadSceneAsync(0);
     }
 }
