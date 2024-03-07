@@ -18,6 +18,12 @@ public class ScoreControl : MonoBehaviour
         instance = this;
     }
 
+    public void ResetScore()
+    {
+        currentScore = 0;
+        scoreText.text = currentScore.ToString();
+    }
+
     public void IncrementGlassware(int amount)
     {
         IncrementScore(amount * glasswareValue);
@@ -31,6 +37,11 @@ public class ScoreControl : MonoBehaviour
     public void IncrementPoop(int amount)
     {
         IncrementScore(amount * poopValue);
+    }
+
+    public int GetScore()
+    {
+        return currentScore;
     }
 
     void IncrementScore(int amount)

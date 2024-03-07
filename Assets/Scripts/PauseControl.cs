@@ -18,6 +18,7 @@ public class PauseControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // TODO: If game is over, don't allow pausing.
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (gameIsPaused)
@@ -38,7 +39,6 @@ public class PauseControl : MonoBehaviour
         AudioListener.pause = true;
         pauseDisplay.SetActive(true);
         alertDisplay.SetActive(false);
-
     }
 
     public void ResumeGame()

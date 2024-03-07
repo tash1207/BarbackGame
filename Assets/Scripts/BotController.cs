@@ -30,8 +30,6 @@ public class BotController : MonoBehaviour
 
         currentGlassware = 0;
         currentPoop = 0;
-
-        AlertControl.instance.ShowAlert("Press E to interact with objects");
     }
 
     // Update is called once per frame
@@ -84,13 +82,11 @@ public class BotController : MonoBehaviour
     {
         if (currentPoop > 0)
         {
-            Debug.Log("Drop off poop before picking up glassware");
             AlertControl.instance.ShowAlert("Drop off poop before picking up glassware");
             return false;
         }
         else if (currentGlassware == maxGlassware)
         {
-            Debug.Log("Already carrying max glasses");
             AlertControl.instance.ShowAlert("Already carrying max glasses");
             return false;
         }
@@ -127,13 +123,11 @@ public class BotController : MonoBehaviour
     {
         if (currentPoop > 0)
         {
-            Debug.Log("Drop off poop before picking up tray");
             AlertControl.instance.ShowAlert("Drop off poop before picking up tray");
             return false;
         }
         else if (currentTrays == maxTrays)
         {
-            Debug.Log("Already carrying max trays");
             AlertControl.instance.ShowAlert("Already carrying max trays");
             return false;
         }
@@ -165,7 +159,6 @@ public class BotController : MonoBehaviour
     {
         if (currentGlassware > 0 || currentTrays > 0)
         {
-            Debug.Log("Drop off glassware/trays before picking up poop");
             AlertControl.instance.ShowAlert("Drop off glassware/trays before picking up poop");
             return false;
         }

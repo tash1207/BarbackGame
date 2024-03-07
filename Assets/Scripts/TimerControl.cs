@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class TimerControl : MonoBehaviour
 {
-    public float timeLeft;
-    public bool timerOn = false;
+    public static TimerControl instance { get; private set; }
     public Text timerText;
+    float defaultLevelTime = 60f;
+    float timeLeft;
+    bool timerOn = false;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        timerOn = true;
+        instance = this;
     }
 
     // Update is called once per frame
@@ -27,9 +28,9 @@ public class TimerControl : MonoBehaviour
             }
             else
             {
-                Debug.Log("Time is up!");
                 timeLeft = 0;
                 timerOn = false;
+                GameManager.instance.EndGame();
             }
         }
         
@@ -43,5 +44,11 @@ public class TimerControl : MonoBehaviour
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+    }
+
+    public void ResetTimer()
+    {
+        timerOn = true;
+        timeLeft = defaultLevelTime;
     }
 }

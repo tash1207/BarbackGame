@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance { get; private set; }
     public List<GameObject> tables;
     public GameObject beerPrefab;
     public GameObject blueTrayPrefab;
     public GameObject redTrayPrefab;
+
+    public GameObject pauseDisplay;
+    public GameObject alertDisplay;
+    public GameObject gameOverDisplay;
+    public Text finalScoreText;
 
     float beerTimer;
     float beerChangeTime = 4.0f;
@@ -15,11 +22,18 @@ public class GameManager : MonoBehaviour
     float trayChangeTime = 9.0f;
     int tableIndex = 0;
 
+    void Awake()
+    {
+        instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         beerTimer = beerChangeTime;
         trayTimer = trayChangeTime;
+
+        StartGame();
     }
 
     // Update is called once per frame
@@ -30,15 +44,15 @@ public class GameManager : MonoBehaviour
 
         if (beerTimer < 0)
         {
-            spawnBeer();
+            SpawnBeer();
         }
         if (trayTimer < 0)
         {
-            spawnTray();
+            SpawnTray();
         }
     }
 
-    void spawnBeer()
+    void SpawnBeer()
     {
         tableIndex = Random.Range(0, 5);
         GameObject table = tables[tableIndex];
@@ -51,7 +65,7 @@ public class GameManager : MonoBehaviour
         beerTimer = beerChangeTime;
     }
 
-    void spawnTray()
+    void SpawnTray()
     {
         tableIndex = Random.Range(1, 5);
         GameObject table = tables[tableIndex];
@@ -61,5 +75,25 @@ public class GameManager : MonoBehaviour
         GameObject newTray = Instantiate(Random.Range(0, 2) < 1 ? blueTrayPrefab : redTrayPrefab, trayPosition, Quaternion.identity) as GameObject;
         newTray.transform.parent = table.transform;
         trayTimer = trayChangeTime;
+    }
+
+    public void StartGame()
+    {
+        // TODO: Set player start location and the starting beers and trays here.
+        TimerControl.instance.ResetTimer();
+        ScoreControl.instance.ResetScore();
+        AlertControl.instance.ShowAlert("Press E to interact with objects");
+        Time.timeScale = 1;
+        gameOverDisplay.SetActive(false);
+    }
+
+    public void EndGame()
+    {
+        Time.timeScale = 0;
+        //AudioListener.pause = true;
+        pauseDisplay.SetActive(false);
+        alertDisplay.SetActive(false);
+        gameOverDisplay.SetActive(true);
+        finalScoreText.text = "Final Score: " + ScoreControl.instance.GetScore().ToString();
     }
 }
