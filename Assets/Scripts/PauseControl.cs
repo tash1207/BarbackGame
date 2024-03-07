@@ -20,20 +20,20 @@ public class PauseControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            gameIsPaused = !gameIsPaused;
             if (gameIsPaused)
             {
-                PauseGame();
+                ResumeGame();
             }
             else
             {
-                ResumeGame();
+                PauseGame();
             }
         }
     }
 
     public void PauseGame()
     {
+        gameIsPaused = true;
         Time.timeScale = 0;
         AudioListener.pause = true;
         pauseDisplay.SetActive(true);
@@ -43,6 +43,7 @@ public class PauseControl : MonoBehaviour
 
     public void ResumeGame()
     {
+        gameIsPaused = false;
         Time.timeScale = 1;
         AudioListener.pause = false;
         pauseDisplay.SetActive(false);
@@ -50,7 +51,6 @@ public class PauseControl : MonoBehaviour
 
     public void ExitToMainMenu()
     {
-        gameIsPaused = false;
         ResumeGame();
         SceneManager.LoadSceneAsync(0);
     }
