@@ -5,6 +5,9 @@ using UnityEngine;
 public class BotController : MonoBehaviour
 {
     public GameObject bot;
+    public GameObject mobileControls;
+    public Joystick joystick;
+
     int maxGlassware = 5;
     int currentGlassware;
     int glassesCleared = 0;
@@ -30,13 +33,48 @@ public class BotController : MonoBehaviour
 
         currentGlassware = 0;
         currentPoop = 0;
+
+        bool showMobileControls = OptionsControl.instance.GetMobileOptionValue();
+        mobileControls.SetActive(showMobileControls);
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        // Mobile Controls
+        if (OptionsControl.instance.GetMobileOptionValue())
+        {
+            if (joystick.Horizontal >= 0.1f)
+            {
+                horizontal = 1.0f;
+            }
+            else if (joystick.Horizontal <= -0.1f)
+            {
+                horizontal = -1.0f;
+            }
+            else
+            {
+                horizontal = 0.0f;
+            }
+
+            if (joystick.Vertical >= 0.1f)
+            {
+                vertical = 1.0f;
+            }
+            else if (joystick.Vertical <= -0.1f)
+            {
+                vertical = -1.0f;
+            }
+            else
+            {
+                vertical = 0.0f;
+            }
+        }
+        else
+        {
+            horizontal = Input.GetAxis("Horizontal");
+            vertical = Input.GetAxis("Vertical");
+        }
 
         Vector2 move = new Vector2(horizontal, vertical);
 
@@ -50,21 +88,9 @@ public class BotController : MonoBehaviour
         animator.SetFloat("Look Y", lookDirection.y);
         animator.SetFloat("Speed", move.magnitude);
 
-        if (!PauseControl.gameIsPaused)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                // Shift the position up a little due to bottom pivot.
-                Vector2 raycastOrigin = new Vector2(rigidbody2d.position.x, rigidbody2d.position.y + 0.6f);
-                RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, lookDirection, 1.3f, LayerMask.GetMask("Interactable"));
-                if (hit.collider != null)
-                {
-                    GameObject interactableObject = hit.collider.gameObject;
-                    Debug.Log("Hit object " + interactableObject);
-                    Interactable interactable = interactableObject.GetComponent<Interactable>();
-                    interactable.Interact(bot);
-                }
-            }
+            Interact();
         }
     }
 
@@ -75,6 +101,23 @@ public class BotController : MonoBehaviour
         position.y = position.y + 3.2f * vertical * Time.deltaTime;
 
         rigidbody2d.MovePosition(position);
+    }
+
+    public void Interact()
+    {
+        if (!PauseControl.gameIsPaused)
+        {
+            // Shift the position up a little due to bottom pivot.
+            Vector2 raycastOrigin = new Vector2(rigidbody2d.position.x, rigidbody2d.position.y + 0.6f);
+            RaycastHit2D hit = Physics2D.Raycast(raycastOrigin, lookDirection, 1.3f, LayerMask.GetMask("Interactable"));
+            if (hit.collider != null)
+            {
+                GameObject interactableObject = hit.collider.gameObject;
+                Debug.Log("Hit object " + interactableObject);
+                Interactable interactable = interactableObject.GetComponent<Interactable>();
+                interactable.Interact(bot);
+            }
+        }
     }
 
     // Returns whether the change in glassware succeeded or not.
