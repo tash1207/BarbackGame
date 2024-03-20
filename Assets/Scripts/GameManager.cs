@@ -79,10 +79,19 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        Debug.Log("Start Game");
         // TODO: Set player start location and the starting beers and trays here.
         TimerControl.instance.ResetTimer();
         ScoreControl.instance.ResetScore();
-        AlertControl.instance.ShowAlert("Press E to interact with objects");
+        // AlertControl.instance.ShowAlert("Press E to interact with objects");
+        if (OptionsControl.instance.GetMobileOptionValue())
+        {
+            AlertControl.instance.ShowAlert("Mobile mode enabled");
+        }
+        else
+        {
+            AlertControl.instance.ShowAlert("Press E to interact with objects");
+        }
         Time.timeScale = 1;
         gameOverDisplay.SetActive(false);
     }

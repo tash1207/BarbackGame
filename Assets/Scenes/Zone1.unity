@@ -5934,6 +5934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonClickSound: {fileID: 8300000, guid: f17dfe6f0fceb874eb4fbe4e011cda3d, type: 3}
+  mobileOptionButtonText: {fileID: 0}
 --- !u!1001 &1829405432
 PrefabInstance:
   m_ObjectHideFlags: 0
