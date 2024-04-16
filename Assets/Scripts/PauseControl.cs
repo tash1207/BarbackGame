@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,6 +10,7 @@ public class PauseControl : MonoBehaviour
     public static bool gameIsPaused;
     public GameObject pauseDisplay;
     public GameObject alertDisplay;
+    public TMP_Text mobileOptionButtonText;
 
     void Awake()
     {
@@ -39,6 +41,7 @@ public class PauseControl : MonoBehaviour
         AudioListener.pause = true;
         pauseDisplay.SetActive(true);
         alertDisplay.SetActive(false);
+        UpdateOptionsValues();
     }
 
     public void ResumeGame()
@@ -47,6 +50,18 @@ public class PauseControl : MonoBehaviour
         Time.timeScale = 1;
         AudioListener.pause = false;
         pauseDisplay.SetActive(false);
+    }
+
+    public void ToggleMobileMode()
+    {
+        OptionsControl.instance.ToggleMobileOptionValue();
+        UpdateOptionsValues();
+    }
+
+    void UpdateOptionsValues()
+    {
+        bool value = OptionsControl.instance.GetMobileOptionValue();
+        mobileOptionButtonText.text = value ? "KEYBOARD" : "MOBILE";
     }
 
     public void ExitToMainMenu()

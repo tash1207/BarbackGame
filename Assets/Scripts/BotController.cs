@@ -33,24 +33,24 @@ public class BotController : MonoBehaviour
 
         currentGlassware = 0;
         currentPoop = 0;
-
-        bool showMobileControls = OptionsControl.instance.GetMobileOptionValue();
-        mobileControls.SetActive(showMobileControls);
     }
 
     // Update is called once per frame
     void Update()
     {
+        bool useMobileControls = OptionsControl.instance.GetMobileOptionValue();
+        mobileControls.SetActive(useMobileControls);
+        
         // Mobile Controls
-        if (OptionsControl.instance.GetMobileOptionValue())
+        if (useMobileControls)
         {
             if (joystick.Horizontal >= 0.1f)
             {
-                horizontal = 1.0f;
+                horizontal = joystick.Horizontal;
             }
             else if (joystick.Horizontal <= -0.1f)
             {
-                horizontal = -1.0f;
+                horizontal = joystick.Horizontal;
             }
             else
             {
@@ -59,11 +59,11 @@ public class BotController : MonoBehaviour
 
             if (joystick.Vertical >= 0.1f)
             {
-                vertical = 1.0f;
+                vertical = joystick.Vertical;
             }
             else if (joystick.Vertical <= -0.1f)
             {
-                vertical = -1.0f;
+                vertical = joystick.Vertical;
             }
             else
             {

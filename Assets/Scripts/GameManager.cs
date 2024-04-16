@@ -86,6 +86,10 @@ public class GameManager : MonoBehaviour
         {
             AlertControl.instance.ShowAlert("Press E to interact with objects");
         }
+        else if (OptionsControl.instance.GetMobileOptionValue())
+        {
+            AlertControl.instance.ShowAlert("Make sure your phone is in landscape mode");
+        }
         Time.timeScale = 1;
         gameOverDisplay.SetActive(false);
     }
