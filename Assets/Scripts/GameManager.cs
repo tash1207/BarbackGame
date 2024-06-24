@@ -81,6 +81,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         // TODO: Set player start location and the starting beers and trays here.
+        BackgroundMusic.instance.PlayGameMusic();
         TimerControl.instance.ResetTimer();
         ScoreControl.instance.ResetScore();
         if (!OptionsControl.instance.GetMobileOptionValue())

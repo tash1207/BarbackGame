@@ -31,6 +31,14 @@ public class MainMenu : MonoBehaviour
 
     void PlaySound(AudioClip clip)
     {
+        if (audioSource == null)
+        {
+            Debug.Log("null audio source");
+        }
+        if (clip == null)
+        {
+            Debug.Log("null clip " + clip);
+        }
         audioSource.PlayOneShot(clip);
     }
 }

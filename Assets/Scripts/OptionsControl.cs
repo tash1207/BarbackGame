@@ -6,7 +6,8 @@ public class OptionsControl : MonoBehaviour
 {
     public static OptionsControl instance { get; private set; }
 
-    bool mobileOption;
+    bool mobileOption = false;
+    bool soundOption = true;
 
     void Awake()
     {
@@ -27,5 +28,15 @@ public class OptionsControl : MonoBehaviour
     public void ToggleMobileOptionValue()
     {
         mobileOption = !mobileOption;
+    }
+
+    public bool GetSoundOptionValue()
+    {
+        return soundOption;
+    }
+
+    public void ToggleSoundOptionValue()
+    {
+        soundOption = !soundOption;
     }
 }

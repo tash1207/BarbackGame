@@ -70,6 +70,7 @@ public class PauseControl : MonoBehaviour
     public void ExitToMainMenu()
     {
         ResumeGame();
+        BackgroundMusic.instance.PlayMenuMusic();
         SceneManager.LoadSceneAsync(0);
     }
 }
