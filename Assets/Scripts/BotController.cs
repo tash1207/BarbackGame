@@ -235,6 +235,7 @@ public class BotController : MonoBehaviour
         {
             currentPoop = currentPoop + amount;
             Debug.Log("Carrying poop: " + currentPoop);
+            UIManager.instance.SetPoopValue(currentPoop);
             return true;
         }
     }
@@ -247,6 +248,7 @@ public class BotController : MonoBehaviour
             poopCleared = poopCleared + currentPoop;
             currentPoop = 0;
             Debug.Log("Total poop cleared = " + poopCleared);
+            UIManager.instance.SetPoopValue(0);
             return true;
         }
         return false;

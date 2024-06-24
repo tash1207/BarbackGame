@@ -7,8 +7,13 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager instance { get; private set; }
 
-    public Text beerCount;
+    public GameObject trayDisplay;
+    public GameObject beerDisplay;
+    public GameObject poopDisplay;
+
     public Text trayCount;
+    public Text beerCount;
+    public Text poopCount;
 
     void Awake()
     {
@@ -25,5 +30,23 @@ public class UIManager : MonoBehaviour
     {
         trayCount.text = value.ToString();
         trayCount.color = value == 10 ? Color.red : Color.white ;
+    }
+
+    public void SetPoopValue(int value)
+    {
+        poopCount.text = value.ToString();
+
+        if (value != 0)
+        {
+            trayDisplay.SetActive(false);
+            beerDisplay.SetActive(false);
+            poopDisplay.SetActive(true);
+        }
+        else
+        {
+            trayDisplay.SetActive(true);
+            beerDisplay.SetActive(true);
+            poopDisplay.SetActive(false);
+        }
     }
 }
