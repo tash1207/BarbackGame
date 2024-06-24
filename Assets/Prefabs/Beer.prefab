@@ -124,3 +124,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactedClip: {fileID: 8300000, guid: f17dfe6f0fceb874eb4fbe4e011cda3d, type: 3}
   negativeClip: {fileID: 8300000, guid: 496208e345898e24dac7f22e8bc864d2, type: 3}
+  brokenGlassClip: {fileID: 8300000, guid: 36a8b7193377acf44a5c6ba0dbae1779, type: 3}

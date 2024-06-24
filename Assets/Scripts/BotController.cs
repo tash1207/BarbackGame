@@ -121,25 +121,51 @@ public class BotController : MonoBehaviour
     }
 
     // Returns whether the change in glassware succeeded or not.
-    public bool ChangeGlassware(int amount)
+    // 1 if change in glassware succeeded.
+    // 0 if no change in glassware occurs.
+    // -1 if all glassware was dropped.
+    public int ChangeGlassware(int amount)
     {
         if (currentPoop > 0)
         {
             AlertControl.instance.ShowAlert("Drop off poop before picking up glassware");
-            return false;
+            return 0;
         }
-        else if (currentGlassware == maxGlassware)
+        else if (currentGlassware >= maxGlassware)
         {
-            AlertControl.instance.ShowAlert("Already carrying max glasses");
-            return false;
+            // Logic to determine if glassware gets dropped.
+            int percentChanceOfDropping = 6 + (9 * (currentGlassware - maxGlassware)) + Mathf.Clamp(currentTrays - 2, 0, maxTrays);
+            Debug.Log("Percent chance of dropping: " + percentChanceOfDropping + "%");
+            if (Random.Range(0, 100) < percentChanceOfDropping)
+            {
+                currentGlassware = 0;
+                AlertControl.instance.ShowAlert("Dropped all glasses!");
+                Debug.Log("Dropped! Glassware: " + currentGlassware + "/" + maxGlassware);
+                UIManager.instance.SetBeerValue(0);
+                return -1;
+            }
+            else
+            {
+                Debug.Log("Phew!");
+                return PickUpGlassware(amount);
+            }
         }
         else
         {
-            currentGlassware = Mathf.Clamp(currentGlassware + amount, 0, maxGlassware);
-            Debug.Log("Glassware: " + currentGlassware + "/" + maxGlassware);
-            UIManager.instance.SetBeerValue(currentGlassware);
-            return true;
+            return PickUpGlassware(amount);
         }
+    }
+
+    int PickUpGlassware(int amount)
+    {
+        currentGlassware += amount;
+        Debug.Log("Glassware: " + currentGlassware + "/" + maxGlassware);
+        UIManager.instance.SetBeerValue(currentGlassware);
+        if (currentGlassware == maxGlassware)
+        {
+            AlertControl.instance.ShowAlert("Warning: Trying to carry more glasses may result in dropping them");
+        }
+        return 1;
     }
 
     public bool ClearGlassware()
