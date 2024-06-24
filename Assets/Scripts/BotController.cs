@@ -228,7 +228,7 @@ public class BotController : MonoBehaviour
     {
         if (currentGlassware > 0 || currentTrays > 0)
         {
-            AlertControl.instance.ShowAlert("Drop off glassware/trays before picking up poop");
+            AlertControl.instance.ShowAlert("Drop off glassware & trays before picking up poop");
             return false;
         }
         else
