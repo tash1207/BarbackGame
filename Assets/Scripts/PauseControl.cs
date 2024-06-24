@@ -20,7 +20,10 @@ public class PauseControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // TODO: If game is over, don't allow pausing.
+        // If game is over, don't allow pausing.
+        if (GameManager.gameIsEnded) {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (gameIsPaused)

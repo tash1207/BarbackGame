@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
+    public static bool gameIsEnded;
     public List<GameObject> tables;
     public GameObject beerPrefab;
     public GameObject blueTrayPrefab;
@@ -92,6 +93,7 @@ public class GameManager : MonoBehaviour
         }
         Time.timeScale = 1;
         gameOverDisplay.SetActive(false);
+        gameIsEnded = false;
     }
 
     public void EndGame()
@@ -102,5 +104,6 @@ public class GameManager : MonoBehaviour
         alertDisplay.SetActive(false);
         gameOverDisplay.SetActive(true);
         finalScoreText.text = "Final Score: " + ScoreControl.instance.GetScore().ToString();
+        gameIsEnded = true;
     }
 }

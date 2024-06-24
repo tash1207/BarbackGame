@@ -105,7 +105,7 @@ public class BotController : MonoBehaviour
 
     public void Interact()
     {
-        if (!PauseControl.gameIsPaused)
+        if (!PauseControl.gameIsPaused && !GameManager.gameIsEnded)
         {
             // Shift the position up a little due to bottom pivot.
             Vector2 raycastOrigin = new Vector2(rigidbody2d.position.x, rigidbody2d.position.y + 0.6f);
