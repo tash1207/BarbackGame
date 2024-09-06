@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverDisplay;
     public Text finalScoreText;
 
+    public AudioClip gameOverAudioClip;
+    AudioSource audioSource;
+
     float beerTimer;
     float beerChangeTime = 4.0f;
     float trayTimer;
@@ -31,6 +34,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         beerTimer = beerChangeTime;
         trayTimer = trayChangeTime;
 
@@ -106,5 +110,7 @@ public class GameManager : MonoBehaviour
         gameOverDisplay.SetActive(true);
         finalScoreText.text = "Final Score: " + ScoreControl.instance.GetScore().ToString();
         gameIsEnded = true;
+        // Play game over audio
+        // audioSource.PlayOneShot(gameOverAudioClip);
     }
 }
