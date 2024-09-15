@@ -306,7 +306,7 @@ TextureImporter:
       213: 1077460728568903705
     second: TilesProject_100
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -323,10 +323,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -365,6 +367,8 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -376,6 +380,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -388,6 +393,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -400,6 +406,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -412,6 +419,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -2548,9 +2556,110 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      TilesProject_0: 316699508989165444
+      TilesProject_1: -881312265579739942
+      TilesProject_10: -8823797284074677030
+      TilesProject_100: 1077460728568903705
+      TilesProject_11: -1286115913136289443
+      TilesProject_12: 4839024333923108233
+      TilesProject_13: -6982453229274484157
+      TilesProject_14: 2437396473910170986
+      TilesProject_15: -4907257086709388460
+      TilesProject_16: 5052236485618462303
+      TilesProject_17: 2475781317078326220
+      TilesProject_18: -3442125918313412476
+      TilesProject_19: -4607168031863030804
+      TilesProject_2: -4706913497469069390
+      TilesProject_20: -1866480002395585277
+      TilesProject_21: -1282337752628847046
+      TilesProject_22: -8325428672854486148
+      TilesProject_23: -5532646098939619306
+      TilesProject_24: 237257507697756149
+      TilesProject_25: -6242255728287953800
+      TilesProject_26: -1850945070339404676
+      TilesProject_27: 6891182736164099119
+      TilesProject_28: -9174719876104980893
+      TilesProject_29: 2266474634144455225
+      TilesProject_3: 6333213211240410140
+      TilesProject_30: 1717052760084710213
+      TilesProject_31: 6220386480722085286
+      TilesProject_32: 3657146203452151523
+      TilesProject_33: 6265491943522931807
+      TilesProject_34: -3386536659778857508
+      TilesProject_35: -8231955618796678931
+      TilesProject_36: -6090088057080607746
+      TilesProject_37: -5446182499559928361
+      TilesProject_38: -5375635138853748622
+      TilesProject_39: -931101410697432123
+      TilesProject_4: -2920739296792929470
+      TilesProject_40: 5294592460990196907
+      TilesProject_41: -3840177996630259699
+      TilesProject_42: -1551498500819742504
+      TilesProject_43: -1503165804978579875
+      TilesProject_44: 362414842688979073
+      TilesProject_45: -2695865528684345479
+      TilesProject_46: 4271077364708034134
+      TilesProject_47: 20582229285447330
+      TilesProject_48: 1078222148787726943
+      TilesProject_49: 5650721931837616484
+      TilesProject_5: -2473017745412030721
+      TilesProject_50: 5173098081799887996
+      TilesProject_51: -8114865807281420894
+      TilesProject_52: -764639778698910298
+      TilesProject_53: 4212918547298878449
+      TilesProject_54: 7897554956149293232
+      TilesProject_55: -8338968133164692334
+      TilesProject_56: 6573905291221270728
+      TilesProject_57: 6078178615787866316
+      TilesProject_58: 6210078866010944952
+      TilesProject_59: -2140762015983941336
+      TilesProject_6: 4612110896326588026
+      TilesProject_60: -2564459110190681416
+      TilesProject_61: 8826219826005798301
+      TilesProject_62: 7390150529830540849
+      TilesProject_63: -7867198356890096019
+      TilesProject_64: 4470536156302620093
+      TilesProject_65: 5377189818944543246
+      TilesProject_66: 7554728621243649525
+      TilesProject_67: 6969746721433173945
+      TilesProject_68: 2807807912144843607
+      TilesProject_69: 1384266301880913954
+      TilesProject_7: -6915456119012065827
+      TilesProject_70: 1187307193965613383
+      TilesProject_71: 291918188385816853
+      TilesProject_72: -7612312520617421073
+      TilesProject_73: -4320307281897885959
+      TilesProject_74: 5271769265562230999
+      TilesProject_75: 1737683662923309749
+      TilesProject_76: -4684597440484435785
+      TilesProject_77: -2931647483595448970
+      TilesProject_78: 510788931747407843
+      TilesProject_79: 1961055266766463179
+      TilesProject_8: 901781379111690117
+      TilesProject_80: -5159180798029411696
+      TilesProject_81: 8429033845299043718
+      TilesProject_82: -3214090958989480073
+      TilesProject_83: 6219478362210546839
+      TilesProject_84: -8096687986219701380
+      TilesProject_85: -3788065527344054545
+      TilesProject_86: -1342347546996457142
+      TilesProject_87: -238160355028678016
+      TilesProject_88: -4716672018293371233
+      TilesProject_89: 7753079256672176459
+      TilesProject_9: -2295230466530120022
+      TilesProject_90: 6237391192875222081
+      TilesProject_91: 6597770286311628269
+      TilesProject_92: -4513649922483831134
+      TilesProject_93: 2695572699612662743
+      TilesProject_94: 7756023860365500404
+      TilesProject_95: 3437000351670221542
+      TilesProject_96: 4832152724532164598
+      TilesProject_97: -4125813932771188481
+      TilesProject_98: 6879826939075410877
+      TilesProject_99: 6570766314659944001
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
