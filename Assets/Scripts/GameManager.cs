@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] Text finalScoreText;
 
     PlayerController playerController;
+    DialogueController dialogueController;
 
     public AudioClip gameOverAudioClip;
     AudioSource audioSource;
@@ -39,11 +40,16 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
+        dialogueController = FindObjectOfType<DialogueController>();
+
         audioSource = GetComponent<AudioSource>();
         beerTimer = beerChangeTime;
         trayTimer = trayChangeTime;
 
-        StartGame();
+        Time.timeScale = 0;
+        gameIsEnded = true;
+        dialogueController.DisplayIntroDialogInteraction();
+        //StartGame();
     }
 
     // Update is called once per frame
