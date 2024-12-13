@@ -6,27 +6,26 @@ public class BeerGlass : Interactable
 {
     public AudioClip brokenGlassClip;
 
-    public override void Interact(GameObject bot)
+    public override void Interact()
     {
-        base.Interact(bot);
-        BotController controller = bot.GetComponent<BotController>();
+        base.Interact();
         Debug.Log("Beer Glass Interacted");
         if (gameObject.tag == "Removable")
         {
-            int changeInGlassware = controller.ChangeGlassware(1);
+            int changeInGlassware = playerController.ChangeGlassware(1);
             if (changeInGlassware > 0)
             {
-                controller.PlaySound(interactedClip);
+                playerController.PlaySound(interactedClip);
                 Destroy(gameObject);
             }
             else if (changeInGlassware < 0)
             {
-                controller.PlaySound(brokenGlassClip);
+                playerController.PlaySound(brokenGlassClip);
                 Destroy(gameObject);
             }
             else
             {
-                controller.PlaySound(negativeClip);
+                playerController.PlaySound(negativeClip);
             }
         }
     }

@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class BusStation : Interactable
 {
-    public override void Interact(GameObject bot)
+    public override void Interact()
     {
-        base.Interact(bot);
-        BotController controller = bot.GetComponent<BotController>();
+        base.Interact();
         Debug.Log("Bus Station Interacted");
-        if (controller.ClearGlassware() | controller.ClearTrays())
+        if (playerController.ClearGlassware() | playerController.ClearTrays())
         {
-            controller.PlaySound(interactedClip);
+            playerController.PlaySound(interactedClip);
         }
     }
 }

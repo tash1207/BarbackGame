@@ -7,19 +7,14 @@ public class Interactable : MonoBehaviour
     public AudioClip interactedClip;
     public AudioClip negativeClip;
 
-    // Start is called before the first frame update
+    protected PlayerController playerController;
+
     void Start()
     {
-        
+        playerController = FindObjectOfType<PlayerController>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public virtual void Interact(GameObject bot)
+    public virtual void Interact()
     {
         Debug.Log("Interacted");
     }

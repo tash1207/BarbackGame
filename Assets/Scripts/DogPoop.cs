@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class DogPoop : Interactable
 {
-    public override void Interact(GameObject bot)
+    public override void Interact()
     {
-        base.Interact(bot);
-        BotController controller = bot.GetComponent<BotController>();
+        base.Interact();
         Debug.Log("Dog Poop Interacted");
         if (gameObject.tag == "Removable")
         {
-            if (controller.ChangePoop(1))
+            if (playerController.ChangePoop(1))
             {
-                controller.PlaySound(interactedClip);
+                playerController.PlaySound(interactedClip);
                 Destroy(gameObject);
             }
             else
             {
-                controller.PlaySound(negativeClip);
+                playerController.PlaySound(negativeClip);
             }
         }
     }

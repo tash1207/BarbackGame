@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BotController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    public GameObject bot;
     public GameObject mobileControls;
     public Joystick joystick;
 
@@ -115,7 +114,7 @@ public class BotController : MonoBehaviour
                 GameObject interactableObject = hit.collider.gameObject;
                 Debug.Log("Hit object " + interactableObject);
                 Interactable interactable = interactableObject.GetComponent<Interactable>();
-                interactable.Interact(bot);
+                interactable.Interact();
             }
         }
     }

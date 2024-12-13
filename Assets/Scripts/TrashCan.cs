@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class TrashCan : Interactable
 {
-    public override void Interact(GameObject bot)
+    public override void Interact()
     {
-        base.Interact(bot);
-        BotController controller = bot.GetComponent<BotController>();
+        base.Interact();
         Debug.Log("Trash Can Interacted");
-        if (controller.ClearPoop())
+        if (playerController.ClearPoop())
         {
-            controller.PlaySound(interactedClip);
+            playerController.PlaySound(interactedClip);
         }
     }
 }
