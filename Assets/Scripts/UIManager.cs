@@ -38,15 +38,36 @@ public class UIManager : MonoBehaviour
 
         if (value != 0)
         {
-            trayDisplay.SetActive(false);
-            beerDisplay.SetActive(false);
-            poopDisplay.SetActive(true);
+            ShowPoopDisplay();
         }
         else
         {
-            trayDisplay.SetActive(true);
-            beerDisplay.SetActive(true);
-            poopDisplay.SetActive(false);
+            ShowTrayAndBeerDisplay();
         }
+    }
+
+    public void ShowPoopDisplay()
+    {
+        trayDisplay.SetActive(false);
+        beerDisplay.SetActive(false);
+        poopDisplay.SetActive(true);
+    }
+
+    public void ShowTrayAndBeerDisplay()
+    {
+        trayDisplay.SetActive(true);
+        beerDisplay.SetActive(true);
+        poopDisplay.SetActive(false);
+    }
+
+    public void ResetAllDisplayValues()
+    {
+        beerCount.text = "0";
+        beerCount.color = Color.black;
+
+        trayCount.text = "0";
+        trayCount.color = Color.white ;
+
+        poopCount.text = "0";
     }
 }

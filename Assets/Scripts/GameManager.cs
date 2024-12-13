@@ -7,15 +7,19 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
     public static bool gameIsEnded;
-    public List<GameObject> tables;
-    public GameObject beerPrefab;
-    public GameObject blueTrayPrefab;
-    public GameObject redTrayPrefab;
 
-    public GameObject pauseDisplay;
-    public GameObject alertDisplay;
-    public GameObject gameOverDisplay;
-    public Text finalScoreText;
+    [SerializeField] GameObject playerChar;
+    [SerializeField] List<GameObject> tables;
+    [SerializeField] GameObject beerPrefab;
+    [SerializeField] GameObject blueTrayPrefab;
+    [SerializeField] GameObject redTrayPrefab;
+
+    [SerializeField] GameObject pauseDisplay;
+    [SerializeField] GameObject alertDisplay;
+    [SerializeField] GameObject gameOverDisplay;
+    [SerializeField] Text finalScoreText;
+
+    PlayerController playerController;
 
     public AudioClip gameOverAudioClip;
     AudioSource audioSource;
@@ -34,6 +38,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerController = FindObjectOfType<PlayerController>();
         audioSource = GetComponent<AudioSource>();
         beerTimer = beerChangeTime;
         trayTimer = trayChangeTime;
@@ -84,7 +89,10 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        // TODO: Set player start location and the starting beers and trays here.
+        // TODO: Set start location of the beers and trays here.
+        ResetPlayerChar();
+        UIManager.instance.ResetAllDisplayValues();
+        UIManager.instance.ShowTrayAndBeerDisplay();
         BackgroundMusic.instance.PlayGameMusic();
         TimerControl.instance.ResetTimer();
         ScoreControl.instance.ResetScore();
@@ -99,6 +107,15 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         gameOverDisplay.SetActive(false);
         gameIsEnded = false;
+    }
+
+    void ResetPlayerChar()
+    {
+        // Move player character object to start position.
+        Vector2 startPosition = new Vector2(-3f, 3f);
+        playerChar.transform.position = startPosition;
+
+        playerController.ResetAllInteractables();
     }
 
     public void EndGame()

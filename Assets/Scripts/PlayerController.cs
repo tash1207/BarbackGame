@@ -253,6 +253,13 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
+    public void ResetAllInteractables()
+    {
+        currentGlassware = 0;
+        currentTrays = 0;
+        currentPoop = 0;
+    }
+
     public void PlaySound(AudioClip clip)
     {
         audioSource.PlayOneShot(clip);
