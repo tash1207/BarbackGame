@@ -16,3 +16,4 @@ MonoBehaviour:
     a barback.
   dialogueSpeaker: Boss
   dialogueSpeakerSprite: {fileID: -179352962729652545, guid: 02a9706e2c768c845b4d70e1b21d123b, type: 3}
+  buttonText: CONTINUE
