@@ -30,6 +30,11 @@ public class OptionsControl : MonoBehaviour
         mobileOption = !mobileOption;
     }
 
+    public void SetMobileOptionValue(bool value)
+    {
+        mobileOption = value;
+    }
+
     public bool GetSoundOptionValue()
     {
         return soundOption;

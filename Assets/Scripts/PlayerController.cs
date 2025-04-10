@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     Vector2 lookDirection = new Vector2(0, -1);
     float horizontal;
     float vertical;
+    float speed = 3.2f;
 
     // Start is called before the first frame update
     void Start()
@@ -96,8 +97,8 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 position = transform.position;
-        position.x = position.x + 3.2f * horizontal * Time.deltaTime;
-        position.y = position.y + 3.2f * vertical * Time.deltaTime;
+        position.x = position.x + speed * horizontal * Time.deltaTime;
+        position.y = position.y + speed * vertical * Time.deltaTime;
 
         rigidbody2d.MovePosition(position);
     }
