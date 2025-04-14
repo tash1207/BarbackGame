@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
     void ResetPlayerChar()
     {
         // Move player character object to start position.
-        Vector2 startPosition = new Vector2(-3f, 3f);
+        Vector2 startPosition = new Vector2(-3f, 2.8f);
         playerChar.transform.position = startPosition;
 
         playerController.ResetAllInteractables();
