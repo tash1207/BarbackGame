@@ -10,9 +10,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject playerChar;
     [SerializeField] List<GameObject> tables;
-    [SerializeField] GameObject beerPrefab;
-    [SerializeField] GameObject blueTrayPrefab;
-    [SerializeField] GameObject redTrayPrefab;
+    [SerializeField] GameObject[] beerPrefabs;
+    [SerializeField] GameObject[] trayPrefabs;
 
     [SerializeField] GameObject pauseDisplay;
     [SerializeField] GameObject alertDisplay;
@@ -28,7 +27,7 @@ public class GameManager : MonoBehaviour
     float beerTimer;
     float beerChangeTime = 3.5f;
     float trayTimer;
-    float trayChangeTime = 9.0f;
+    float trayChangeTime = 8.5f;
     int tableIndex = 0;
 
     void Awake()
@@ -78,7 +77,7 @@ public class GameManager : MonoBehaviour
         float randomX = Random.Range(-xRange, xRange);
         float randomY = Random.Range(-yRange, yRange);
         Vector2 beerPosition = new Vector2(table.transform.position.x + randomX, table.transform.position.y + randomY);
-        GameObject newBeer = Instantiate(beerPrefab, beerPosition, Quaternion.identity);
+        GameObject newBeer = Instantiate(beerPrefabs[Random.Range(0, 2)], beerPosition, Quaternion.identity);
         newBeer.transform.parent = table.transform;
         // TODO: Adjust time depending on how many removables are on screen.
         beerTimer = beerChangeTime;
@@ -91,7 +90,7 @@ public class GameManager : MonoBehaviour
         float randomX = Random.Range(-0.4f, 0.4f);
         float randomY = Random.Range(-0.5f, 0.7f);
         Vector2 trayPosition = new Vector2(table.transform.position.x + randomX, table.transform.position.y + randomY);
-        GameObject newTray = Instantiate(Random.Range(0, 2) < 1 ? blueTrayPrefab : redTrayPrefab, trayPosition, Quaternion.identity);
+        GameObject newTray = Instantiate(trayPrefabs[Random.Range(0, 2)], trayPosition, Quaternion.identity);
         newTray.transform.parent = table.transform;
         trayTimer = trayChangeTime;
     }

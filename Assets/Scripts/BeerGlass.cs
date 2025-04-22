@@ -6,11 +6,13 @@ using UnityEngine.UI;
 
 public class BeerGlass : Interactable
 {
+    [Header("References")]
     [SerializeField] AudioClip brokenGlassClip;
     [SerializeField] SpriteRenderer beerFill;
 
-    float beerDepletionRate = 10f;
-    float beerAmountDeemedEmpty = 0.35f;
+    [Header("Settings")]
+    [SerializeField] float beerDepletionRate = 10f;
+    [SerializeField] float beerAmountDeemedEmpty = 0.35f;
 
     void Update()
     {
