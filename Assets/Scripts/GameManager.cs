@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     AudioSource audioSource;
 
     float beerTimer;
-    float beerChangeTime = 4.0f;
+    float beerChangeTime = 3.5f;
     float trayTimer;
     float trayChangeTime = 9.0f;
     int tableIndex = 0;
@@ -72,10 +72,13 @@ public class GameManager : MonoBehaviour
     {
         tableIndex = Random.Range(0, 5);
         GameObject table = tables[tableIndex];
-        float randomX = Random.Range(-0.7f, 0.7f);
-        float randomY = Random.Range(-0.7f, 0.7f);
+        float xRange = tableIndex == 0 ? 0.88f : 0.7f;
+        float yRange = tableIndex == 0 ? 0.48f : 0.75f;
+
+        float randomX = Random.Range(-xRange, xRange);
+        float randomY = Random.Range(-yRange, yRange);
         Vector2 beerPosition = new Vector2(table.transform.position.x + randomX, table.transform.position.y + randomY);
-        GameObject newBeer = Instantiate(beerPrefab, beerPosition, Quaternion.identity) as GameObject;
+        GameObject newBeer = Instantiate(beerPrefab, beerPosition, Quaternion.identity);
         newBeer.transform.parent = table.transform;
         // TODO: Adjust time depending on how many removables are on screen.
         beerTimer = beerChangeTime;
@@ -88,7 +91,7 @@ public class GameManager : MonoBehaviour
         float randomX = Random.Range(-0.4f, 0.4f);
         float randomY = Random.Range(-0.5f, 0.7f);
         Vector2 trayPosition = new Vector2(table.transform.position.x + randomX, table.transform.position.y + randomY);
-        GameObject newTray = Instantiate(Random.Range(0, 2) < 1 ? blueTrayPrefab : redTrayPrefab, trayPosition, Quaternion.identity) as GameObject;
+        GameObject newTray = Instantiate(Random.Range(0, 2) < 1 ? blueTrayPrefab : redTrayPrefab, trayPosition, Quaternion.identity);
         newTray.transform.parent = table.transform;
         trayTimer = trayChangeTime;
     }

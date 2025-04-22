@@ -33,10 +33,15 @@ public class AlertControl : MonoBehaviour
 
     public void ShowAlert(string text)
     {
+        ShowAlert(text, alertChangeTime);
+    }
+
+    public void ShowAlert(string text, float time)
+    {
         alertText.text = text;
         alertDisplay.SetActive(true);
         showingAlert = true;
-        alertTimer = alertChangeTime;
+        alertTimer = time;
     }
 
     public void HideAlert()
