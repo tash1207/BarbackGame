@@ -71,8 +71,8 @@ public class GameManager : MonoBehaviour
     {
         tableIndex = Random.Range(0, tables.Count);
         GameObject table = tables[tableIndex];
-        float xRange = tableIndex == 0 ? 0.88f : 0.7f;
-        float yRange = tableIndex == 0 ? 0.48f : 0.78f;
+        float xRange = tableIndex == 0 ? 0.94f : 0.7f;
+        float yRange = tableIndex == 0 ? 0.42f : 0.8f;
 
         float randomX = Random.Range(-xRange, xRange);
         float randomY = Random.Range(-yRange, yRange);
