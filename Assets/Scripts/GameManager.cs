@@ -69,10 +69,10 @@ public class GameManager : MonoBehaviour
 
     void SpawnBeer()
     {
-        tableIndex = Random.Range(0, 5);
+        tableIndex = Random.Range(0, tables.Count);
         GameObject table = tables[tableIndex];
         float xRange = tableIndex == 0 ? 0.88f : 0.7f;
-        float yRange = tableIndex == 0 ? 0.48f : 0.75f;
+        float yRange = tableIndex == 0 ? 0.48f : 0.78f;
 
         float randomX = Random.Range(-xRange, xRange);
         float randomY = Random.Range(-yRange, yRange);
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
 
     void SpawnTray()
     {
-        tableIndex = Random.Range(1, 5);
+        tableIndex = Random.Range(1, tables.Count);
         GameObject table = tables[tableIndex];
         float randomX = Random.Range(-0.4f, 0.4f);
         float randomY = Random.Range(-0.5f, 0.7f);
